@@ -4,4 +4,4 @@ from app.controllers import *
 
 
 
-Route = Blueprint('route',__name__,template_folder="../public/views", static_folder="../public")
+Route = Blueprint('route',__name__,template_folder="../public/views", static_folder="../public/assets")
