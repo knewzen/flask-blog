@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, flash, url_for
 from app.models.User import User
 from config.database import db
+from . import bcrypt
 
 class AuthController(object):
 
@@ -15,7 +16,7 @@ class AuthController(object):
 
         fullname = request.form['fullname']
         username = request.form['username']
-        password = request.form['password']
+        password = bcrypt.generate_password_hash(request.form['password'])
 
         check_data = self.is_data_exist(username)
         
