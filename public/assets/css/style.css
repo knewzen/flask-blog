@@ -1,0 +1,35 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.banner{
+    background-image: url('../images/banner-1.jpg');
+    background-size: cover;
+    height: 450px;
+}
+
+.content{
+    width: 100%;
+}
+
+.navbar a, .navbar ul{
+    display: inline-block;
+    text-decoration: none;
+}
+
+.navbar-blue{
+    background-color: #4F628E;
+    
+}
+.navbar-blue a, .navbar-blue ul{
+    color: #fff;
+}
+
+.nav-list li{
+    display: block;
+    display: inline-block;
+}
+
+.footer{
+    background-color: #313C74;
+}
