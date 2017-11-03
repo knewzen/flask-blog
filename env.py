@@ -1,6 +1,6 @@
 # database config
 
-# database engine such mysql, sqlite, oracle etc
+# database engine such  mysql, sqlite, oracle etc
 DB_ENGINE = "mysql"
 
 # database name
