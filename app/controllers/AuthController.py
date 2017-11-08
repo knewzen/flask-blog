@@ -1,14 +1,48 @@
-from flask import render_template, request, redirect, flash, url_for
+from flask import render_template, request, redirect, flash, url_for, \
+session, jsonify
 from app.models.User import User
 from config.database import db
+from flask_login import login_user
 from . import bcrypt
 
 class AuthController(object):
 
 
+    # login view
     def login(self):
-        return render_template('auth/login/index.html', users=usr)
-        
+        return render_template('auth/login/index.html')
+
+    def login_check(self):
+        users = User()
+        form = request.form
+
+        username = form['username']
+        password = form['password']
+
+        try:
+            user = users.query.filter_by(username=username).first()
+
+            if not user:
+                raise Exception('maaf ada yang salah')
+
+            hash_data = bcrypt.check_password_hash(user.password, password)
+
+            if hash_data :
+                session['id']       = user.id
+                session['username'] = user.username
+
+                return session['username']
+            else:
+                raise Exception("maaf password atau username salah")  
+        except Exception as e:
+            flash('maaf password anda salah','danger')
+            return redirect(url_for('route.login')) 
+
+             
+
+
+
+    # register view 
     def register(self):
         return render_template('auth/register/index.html')
 
@@ -40,5 +74,7 @@ class AuthController(object):
             return True
         else:
             return False
+    
+
 
         
